@@ -2,15 +2,23 @@
   "name": "back2026",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/ClaudioParedesArbeloDev/backend2026#readme",
+  "bugs": {
+    "url": "https://github.com/ClaudioParedesArbeloDev/backend2026/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaudioParedesArbeloDev/backend2026.git"
+  },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "archivoscb.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "axios": "^1.15.2",
-    "sweetalert2": "^11.26.24"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
   }
 }
