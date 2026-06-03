@@ -25,7 +25,7 @@ router.post('/upload', uploader.single('file'), (req, res) => {
     }
     console.log(req.file);
 
-    let file = req.body;
+    let file = req.file;
     
     files.push(file);
     res.send({status: 'success', payload: file});
