@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+
 const router = Router();
 
 const users = [
@@ -29,17 +30,18 @@ router.post('/', (req, res) => {
 });
 
 //esta ruta actualiza un usuario existente
-router.put("/:name", (req, res) => {
-  let { name } = req.params;
+router.put("/:id", (req, res) => {
+  let { id } = req.params;
   let update = req.body;
 
-  const index = users.findIndex((u) => u.name === name);
+  const index = users.findIndex((u) => u.id == id);
 
   if (index === -1) {
-    return res.status(404).json({ message: `User ${name} not found` });
+    return res.status(404).json({ message: `User with id ${id} not found` });
   }
 
   users[index] = { ...users[index], ...update };
+  console.log(users[index])
 
   res.status(200).json(users[index]);
 });
@@ -47,8 +49,8 @@ router.put("/:name", (req, res) => {
 
 //esta ruta elimina un usuario existente
 router.delete("/:id", (req, res) => {
-  let { id } = req.params;
-  console.log(id);
+  const { id } = req.params;
+  
 
   const index = users.findIndex((user) => user.id === parseInt(id));
 
@@ -56,8 +58,17 @@ router.delete("/:id", (req, res) => {
         return res.status(404).json({ message: `User with id ${id} not found` });
     }
   
-    users.splice(index, 1);
-  res.send({ status: "success", message: "User deleted" });
+    const deletedUser = users.splice(index, 1)[0];
+
+    res.json({
+      status: "success",
+      message: "User deleted successfully",
+      deletedUser,
+    });
+
+
+   
+
 });
 
 export default router;
