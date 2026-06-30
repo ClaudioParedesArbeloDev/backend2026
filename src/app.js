@@ -39,9 +39,6 @@ app.set('view engine', 'handlebars');
 //middleware que nos lleva a la carpeta de views
 app.set('views', path.join(__dirname, 'views'));
 
-//middleware que nos lleva a la carpeta de layouts
-
-
 
 //middleware para servir archivos estáticos desde la carpeta "public"
 app.use('/static', express.static('public'));
@@ -57,15 +54,5 @@ app.use('/api/users', userRoutes);
 app.use('/api/files', fileRoutes);
 
 app.use('/', viewsRoutes);
-
-/* function mid1(req, res, next){
-    req.dato1 = 'un dato'
-    next();
-}
-
-app.get('/ruta1', mid1, (req, res)=>{
-    res.json({dato: req.dato1})
-}) */
-
 
 
