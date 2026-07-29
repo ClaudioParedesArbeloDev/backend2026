@@ -24,16 +24,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/', viewsRouter)
 
+let messages = []
+
 socketServer.on('connection', socket => {
     console.log('nuevo cliente conectado')
     socket.on('message', data => {
-        console.log(data)
+        messages.push(data)
+        socketServer.emit('messageLogs', messages)
     })
 
-    socket.emit("evento_para_socket_individual", 'Este mensaje solo lo debe recibir el socket');
-
-    socket.broadcast.emit("evento_para_todos_menos_el_socket_actual", 'este evento lo veran todos los socket conectados, menos el socket actual');
-
-    socketServer.emit("evento_para_todos", 'Este evento lo reciben todos los socket');
+    
 })
 
